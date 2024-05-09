@@ -30,7 +30,7 @@ void move_r(Coordinates coordinates) { //move right one
     push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack    
 }
 
-int cwf(char arr[], Coordinates coordinates) {
+int cwf(char arr[], Coordinates coordinates) { //checks if next locations in front are pheromone free
     Coords current = peek(coordinates);
     int i;
     for (i = 1; current.x + i < MAXSIZEOFMAZE; i++) {
@@ -40,7 +40,7 @@ int cwf(char arr[], Coordinates coordinates) {
     return 1;
 }
 
-int cwb(char arr[], Coordinates coordiantes) {
+int cwb(char arr[], Coordinates coordiantes) { //checks if next locations in back are pheromone free
     int i;
     while (i = 0; arr[coordinates.coords[coordinates.top].x - i] != '*' || arr[coordinates.coords[coordinates.top].x - i] != '+' && coordinates.coords[coordinates.top].x - i != MAXSIZEOFMAZE; i++) {
 
