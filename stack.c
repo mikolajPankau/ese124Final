@@ -30,7 +30,7 @@ void move_r(Coordinates coordinates) { //move right one
     push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack    
 }
 
-int cwf(char arr[], Coordinates coordinates) { //checks if next locations in front are pheromone free
+int cwf(char arr[], Coordinates coordinates) { //checks if the next locations in the front are pheromone free
     Coords current = peek(coordinates);
     int i;
     for (i = 1; current.x + i < MAXSIZEOFMAZE; i++) {
@@ -40,7 +40,7 @@ int cwf(char arr[], Coordinates coordinates) { //checks if next locations in fro
     return 1;
 }
 
-int cwb(char arr[], Coordinates coordiantes) { //checks if next locations in back are pheromone free
+int cwb(char arr[], Coordinates coordiantes) { //checks if the next locations in the back are pheromone free
     int i;
     while (i = 0; arr[coordinates.coords[coordinates.top].x - i] != '*' || arr[coordinates.coords[coordinates.top].x - i] != '+' && coordinates.coords[coordinates.top].x - i != MAXSIZEOFMAZE; i++) {
 
@@ -48,12 +48,24 @@ int cwb(char arr[], Coordinates coordiantes) { //checks if next locations in bac
     return
 }
 
-int cwl(char arr[], Coordinates coordinates) {
-
+int cwl(char arr[], Coordinates coordinates) { //checks if the next locations to the left are pheromone free
+    Coords current = peek(coordinates);
+    int i;
+    for (i = 1; current.y - i >= 0; i++) {
+        if (arr[current.x][current.y - i] == '*')
+            return 0;
+    }
+    return 1;
 }
 
-int cwr(char arr[], Coordinates coordinates) {
-
+int cwr(char arr[], Coordinates coordinates) { //checks if the next locations to the right are pheromone free
+    Coords current = peek(coordinates);
+    int i;
+    for (i = 1; current.y + i < MAXSIZEOFMAZE; i++) {
+        if (arr[current.x][current.y + i] == '*')
+            return 0;
+    }
+    return 1;
 }
 
 void push(Coords coord, Coordinates coordinates) {
@@ -62,8 +74,9 @@ void push(Coords coord, Coordinates coordinates) {
 }
 
 Coords pop(Coordinates coordinates) {
-    return coordinates.coords[coordinates.top];
+    Coords temp = coordinates.coords[coordinates.top];
     coordinates.top = coordinates.top - 1;
+    return temp;
 }
 
 Coords peek(Coordinates coordinates) {
