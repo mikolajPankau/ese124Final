@@ -24,13 +24,20 @@ void move_l(Coordinates coordinates) { //move left one
     coordinates.coords[coordinates.top].y--; //decrement y
     push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack
 }
+
 void move_r(Coordinates coordinates) { //move right one
     coordinates.coords[coordinates.top].y++; //increment y
     push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack    
 }
 
 int cwf(char arr[], Coordinates coordinates) {
-
+    Coords current = peek(coordinates);
+    int i;
+    for (i = 1; current.x + i < MAXSIZEOFMAZE; i++) {
+        if (arr[current.x + i][current.y] == '*')
+            return 0;
+    }
+    return 1;
 }
 
 int cwb(char arr[], Coordinates coordiantes) {
