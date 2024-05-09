@@ -46,6 +46,16 @@ int cwb(char arr[], Coordinates coordinates) { //checks if the next locations in
 
     }
     return
+
+    //Coords current = peek(coordinates);
+    //int i;
+    //for (i = 1; current.x - i < MAXSIZEOFMAZE; i++) {
+        //if (arr[current.x - i][current.y] == '*')
+            //return 0;
+    //}
+    //return 1;
+//}
+
 }
 
 int cwl(char arr[], Coordinates coordinates) { //checks if the next locations to the left are pheromone free
