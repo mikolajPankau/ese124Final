@@ -3,34 +3,30 @@
 #include <string.h>
 #include "stack.h"
 
+#define MAXSIZEOFMAZE 100
 
 
 void mark(Coordinates coordinates) {
 
 }
 
-void move_f(Coordinates coordinates) {
-
-    coordinates->x++; //move forward one
-
+void move_f(Coordinates coordinates) { //move forward one
+    coordinates.coords[coordinates.top].x++; //increment x
+    push(coordinates.coords[coordinates.top], coordinates);  //push updated position onto stack
 }
 
-void move_b(Coordinates coordinates) {
-
-    coordinates->x--; //move backward one
-
+void move_b(Coordinates coordinates) { //move backward one
+    coordinates.coords[coordinates.top].x--; //decrement x
+    push(coordinates.coords[coordinates.top], coordinates);  //push updated position onto stack
 }
 
-void move_l(Coordinates coordinates) {
-
-    coordinates->y--; //move left one
-
+void move_l(Coordinates coordinates) { //move left one
+    coordinates.coords[coordinates.top].y--; //decrement y
+    push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack
 }
-
-void move_r(Coordinates coordinates) {
-
-    coordinates->y++; //move right one
-
+void move_r(Coordinates coordinates) { //move right one
+    coordinates.coords[coordinates.top].y++; //increment y
+    push(coordinates.coords[coordinates.top], coordinates); //push updated position onto stack    
 }
 
 int cwf(char arr[], Coordinates coordinates) {
