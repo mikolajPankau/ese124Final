@@ -6,7 +6,7 @@
 #define MAXSIZEOFMAZE 100
 
 
-void mark(Coordinates coordinates) {
+void mark(Coordinates coordinates) { //mark position with pheromone
 
 }
 
