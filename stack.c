@@ -11,17 +11,25 @@ void mark(Coordinates coordinates) {
 
 void move_f(Coordinates coordinates) {
 
+    coordinates->x++; //move forward one
+
 }
 
 void move_b(Coordinates coordinates) {
+
+    coordinates->x--; //move backward one
 
 }
 
 void move_l(Coordinates coordinates) {
 
+    coordinates->y--; //move left one
+
 }
 
 void move_r(Coordinates coordinates) {
+
+    coordinates->y++; //move right one
 
 }
 
