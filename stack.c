@@ -40,7 +40,7 @@ int cwf(char arr[], Coordinates coordinates) { //checks if the next locations in
     return 1;
 }
 
-int cwb(char arr[], Coordinates coordiantes) { //checks if the next locations in the back are pheromone free
+int cwb(char arr[], Coordinates coordinates) { //checks if the next locations in the back are pheromone free
     int i;
     while (i = 0; arr[coordinates.coords[coordinates.top].x - i] != '*' || arr[coordinates.coords[coordinates.top].x - i] != '+' && coordinates.coords[coordinates.top].x - i != MAXSIZEOFMAZE; i++) {
 
