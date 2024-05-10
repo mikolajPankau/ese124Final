@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "actions.h"
+#include <stack.h>
 
 void mark(Maze *maze) {
     maze.map[maze.antPos.x][maze.antPos.y].type = '+';
