@@ -35,5 +35,6 @@ void push(Coord coord, AntMemory *coordinates);
 Coord pop(AntMemory *coordinates);
 Coord peek(AntMemory *coordinates);
 void clear(AntMemory *coordinates);
+void BJPI(int x, Coordinates *coordinates);
 
 #endif
