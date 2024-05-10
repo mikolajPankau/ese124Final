@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "actions.h"
+#include "stack.h"
 
 FILE *f;
 
