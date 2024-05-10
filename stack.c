@@ -67,7 +67,7 @@ int move_r(Maze *maze) {
     return returnVal;
 }
 
-int cwf(Maze *maze, AntMemory *coordinates) {
+int cwf(Maze *maze) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x+1][maze.antPos.y];
     while(c.type != '*' && c.type != '+')
@@ -79,7 +79,7 @@ int cwf(Maze *maze, AntMemory *coordinates) {
     return freeSpots;
 }
 
-int cwb(Maze *maze, AntMemory *coordiantes) {
+int cwb(Maze *maze) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x-1][maze.antPos.y];
     while(c.type != '*' && c.type != '+')
@@ -91,7 +91,7 @@ int cwb(Maze *maze, AntMemory *coordiantes) {
     return freeSpots;
 }
 
-int cwl(Maze *maze, AntMemory *coordinates) {
+int cwl(Maze *maze) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x][maze.antPos.y-1];
     while(c.type != '*' && c.type != '+')
@@ -103,7 +103,7 @@ int cwl(Maze *maze, AntMemory *coordinates) {
     return freeSpots;
 }
 
-int cwr(Maze *maze, AntMemory *coordinates) {
+int cwr(Maze *maze) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x][maze.antPos.y+1];
     while(c.type != '*' && c.type != '+')
