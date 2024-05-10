@@ -3,7 +3,7 @@
 #include <string.h>
 #include "actions.h"
 
-FILE *f;
+FILE *f, *mapFile;
 char c[15];
 int repeatAmount, repeatNum;
 char **repeatArray;
@@ -12,9 +12,10 @@ int temp;
 Maze *maze;
 AntMemory *memory;
 
+
 void runCommand(char *command)
 {
-    
+    //commands
     if(strcmp(command, "MARK"))
         mark(maze);
     else if(strcmp(command, "MOVE_F"))
@@ -34,7 +35,7 @@ void runCommand(char *command)
     else if(strcmp(command, "CWB"))
         cwb(maze);
     else if(strcmp(command, "PUSH"))
-        push(memory);
+        push((*maze).antPos, memory);
     else if(strcmp(command, "POP"))
         pop(memory);
     else if(strcmp(command, "PEEK"))
@@ -73,25 +74,71 @@ void runCommand(char *command)
             }
         }
     else
+        printf("Unknown instruction!\n");
+
+    
 }
 
 
 int main()
 {
+    //open files
     if((f = fopen("instructions.txt", "r")) == NULL)
     {
         printf("Error opening instruction file!\n");
         return 1;
     }
-
+    if((mapFile = fopen("maze.txt", "r")) == NULL)
+    {
+        printf("Error opening maze file!\n");
+        return 1;
+    }
+    //create maze and memory variable
     maze = malloc(sizeof(Maze));
     memory = malloc(sizeof(AntMemory));
 
-    //still have to add a way to add start point, and define the map
+    //create the actual maze in memory
+    int numRows, numCols;
+    printf("Enter size of maze(x, y): ");
+    scanf("%d %d", &numRows, &numCols);
+
+    printf("Enter start point(x, y): ");
+    scanf("%d, %d", &((*maze).antPos.x), &((*maze).antPos.y));
+
+
+    (*maze).map = malloc(numRows * sizeof(char *));
+    for(int i = 0; i < numRows; i++)
+    {
+        (*maze).map[i] = malloc(numCols * sizeof(char));
+        for (int j = 0; j < numCols; j++)
+        {
+            fscanf(mapFile, "%c", &((*maze).map[i][j].type));       //assign the char in the maze
+            switch (((*maze).map[i][j]).type)                       //assign deed point values to each spot in the maze array
+            {
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    ((*maze).map[i][j]).deed = ((*maze).map[i][j]).type - '0';
+                    break;
+            default:
+                ((*maze).map[i][j]).deed = 0;
+                break;
+            }
+        }
+        char a;
+        if((a = fgetc(mapFile)) != '\n')
+            ungetc(a, mapFile);
+    }
 
     while(1)
     {
-        if(scanf("%s", &c) == EOF) { break; }
+        if(fscanf(f, "%s", &c) == EOF) { break; }
         runCommand(c);
     }
 
