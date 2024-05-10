@@ -2,29 +2,38 @@
 #define STACK_H
 #define MAX_SIZE 100
 
-typedef struct coord {
-    int x;
-    int y;
-    int deed;
-} Coords;
+typedef struct coord {  //not all 4 values will always be used
+    int x;              //x coordinate
+    int y;              //y coordinate
+    int deed;           //deed value
+    char type;          //char that reperesents spot: * + # ' '
+} Coord;
 
-typedef struct coordinates {
-    Coords coords[MAX_SIZE];
-    int top;
-} Coordinates;
+typedef struct memory {
+    Coord coords[MAX_SIZE];         //stack with all remembered coords
+    int top;                        //top of stack index
+} AntMemory;
 
-void mark(Coordinates coordinates);
-void move_f(Coordinates coordinates);
-void move_b(Coordinates coordinates);
-void move_l(Coordinates coordinates);
-void move_r(Coordinates coordinates);
-int cwf(char arr[], Coordinates coordinates);
-int cwb(char arr[], Coordinates coordiantes);
-int cwl(char arr[], Coordinates coordinates);
-int cwr(char arr[], Coordinates coordinates);
-void push(Coords coord, Coordinates coordinates);
-Coords pop(Coordinates coordinates);
-Coords peek(Coordinates coordinates);
-void clear(Coordinates coordinates);
+typedef struct maze {
+    int xSize, ySize;               //represents the size of the maze in x and y directions
+    Coord map[10][10];              //2d array representing the maze, will work on dynamic size later
+    Coord antPos;                   //current position of ant
+} Maze;
+
+//i made the move functions return an int, they return the number of good deed points you got with that move
+
+void mark(Maze maze);
+int move_f(Maze maze);
+int move_b(Maze maze);
+int move_l(Maze maze);
+int move_r(Maze maze);
+int cwf(Maze maze, AntMemory AntMemory);
+int cwb(Maze maze, AntMemory coordiantes);
+int cwl(Maze maze, AntMemory AntMemory);
+int cwr(Maze maze, AntMemory AntMemory);
+void push(Coord coord, AntMemory AntMemory);
+Coord pop(AntMemory AntMemory);
+Coord peek(AntMemory AntMemory);
+void clear(AntMemory AntMemory);
 
 #endif
