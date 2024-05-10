@@ -3,11 +3,11 @@
 #include <string.h>
 #include "actions.h"
 
-void mark(Maze maze) {
+void mark(Maze *maze) {
     maze.map[maze.antPos.x][maze.antPos.y].type = '+';
 }
 
-int move_f(Maze maze) {
+int move_f(Maze *maze) {
     int returnVal = 0;
     if(maze.map[maze.antPos.x+1][maze.antPos.y].type != '*' && maze.antPos.x+1 < maze.xSize)
     {
@@ -22,7 +22,7 @@ int move_f(Maze maze) {
     return returnVal;
 }
 
-int move_b(Maze maze) {
+int move_b(Maze *maze) {
     int returnVal = 0;
     if(maze.map[maze.antPos.x-1][maze.antPos.y].type != '*' && maze.antPos.x-1 >= 0)
     {
@@ -37,7 +37,7 @@ int move_b(Maze maze) {
     return returnVal;
 }
 
-int move_l(Maze maze) {
+int move_l(Maze *maze) {
     int returnVal = 0;
     if(maze.map[maze.antPos.x][maze.antPos.y-1].type != '*' && maze.antPos.y-1 >= 0)
     {
@@ -52,7 +52,7 @@ int move_l(Maze maze) {
     return returnVal;
 }
 
-int move_r(Maze maze) {
+int move_r(Maze *maze) {
     int returnVal = 0;
     if(maze.map[maze.antPos.x][maze.antPos.y+1].type != '*' && maze.antPos.y+1 < maze.ySize)
     {
@@ -67,7 +67,7 @@ int move_r(Maze maze) {
     return returnVal;
 }
 
-int cwf(Maze maze, AntMemory coordinates) {
+int cwf(Maze *maze, AntMemory *coordinates) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x+1][maze.antPos.y];
     while(c.type != '*' && c.type != '+')
@@ -79,7 +79,7 @@ int cwf(Maze maze, AntMemory coordinates) {
     return freeSpots;
 }
 
-int cwb(Maze maze, AntMemory coordiantes) {
+int cwb(Maze *maze, AntMemory *coordiantes) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x-1][maze.antPos.y];
     while(c.type != '*' && c.type != '+')
@@ -91,7 +91,7 @@ int cwb(Maze maze, AntMemory coordiantes) {
     return freeSpots;
 }
 
-int cwl(Maze maze, AntMemory coordinates) {
+int cwl(Maze *maze, AntMemory *coordinates) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x][maze.antPos.y-1];
     while(c.type != '*' && c.type != '+')
@@ -103,7 +103,7 @@ int cwl(Maze maze, AntMemory coordinates) {
     return freeSpots;
 }
 
-int cwr(Maze maze, AntMemory coordinates) {
+int cwr(Maze *maze, AntMemory *coordinates) {
     int freeSpots = 0;
     Coord c = maze.map[maze.antPos.x][maze.antPos.y+1];
     while(c.type != '*' && c.type != '+')
@@ -115,20 +115,20 @@ int cwr(Maze maze, AntMemory coordinates) {
     return freeSpots;
 }
 
-void push(Coord coord, AntMemory coordinates) {
+void push(Coord coord, AntMemory *coordinates) {
     coordinates.top += 1;
     coordinates.coords[coordinates.top] = coord;
 }
 
-Coord pop(AntMemory coordinates) {
+Coord pop(AntMemory *coordinates) {
     return coordinates.coords[coordinates.top];
     coordinates.top = coordinates.top - 1;
 }
 
-Coord peek(AntMemory coordinates) {
+Coord peek(AntMemory *coordinates) {
     return coordinates.coords[coordinates.top];
 }
 
-void clear(AntMemory coordinates) {
+void clear(AntMemory *coordinates) {
     coordinates.top = -1;
 }
