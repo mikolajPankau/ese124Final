@@ -312,3 +312,10 @@ void CJPI(Coordinates *coordinates) {
     push(current, coordinates);
 }
 
+void BACKTRACK(Coordinates *coordinates) {
+    Coords target = pop(coordinates);
+    while (peek(coordinates).x != target.x || peek(coordinates).y != target.y) {
+        pop(coordinates);
+    }
+}
+
