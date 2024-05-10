@@ -291,7 +291,7 @@ void BJPI(int x, Coordinates *coordinates) {
     }
 }
 
-void CJPI(Coordinates coordinates) { 
+void CJPI(Coordinates *coordinates) { 
     Coords current = peek(coordinates);
     switch (current.deed) {
         case 0:
