@@ -35,8 +35,8 @@ void push(Coord coord, AntMemory *coordinates);
 Coord pop(AntMemory *coordinates);
 Coord peek(AntMemory *coordinates);
 void clear(AntMemory *coordinates);
-void BJPI(int x, Coordinates *coordinates);
-void CJPI(Coordinates *coordinates);
-void BACKTRACK(Coordinates *coordinates);
+void bjpi(int x, Maze *maze);
+void cjpi(Maze *maze);
+void backtrack(Maze *maze);
 
 #endif
