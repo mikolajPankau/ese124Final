@@ -37,5 +37,6 @@ Coord peek(AntMemory *coordinates);
 void clear(AntMemory *coordinates);
 void BJPI(int x, Coordinates *coordinates);
 void CJPI(Coordinates *coordinates);
+void BACKTRACK(Coordinates *coordinates);
 
 #endif
