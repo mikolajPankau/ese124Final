@@ -83,7 +83,7 @@ void runCommand(char *command)
 int main()
 {
     //open files
-    if((f = fopen("instructions.txt", "r")) == NULL)
+    if((f = fopen("intelligence.txt", "r")) == NULL)
     {
         printf("Error opening instruction file!\n");
         return 1;
