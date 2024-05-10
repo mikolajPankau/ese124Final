@@ -2,7 +2,6 @@ cwf
 cwb
 cwl
 cwr
-mark
 move_f
 mark
 move_b
