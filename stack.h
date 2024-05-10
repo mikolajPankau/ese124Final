@@ -22,18 +22,18 @@ typedef struct maze {
 
 //i made the move functions return an int, they return the number of good deed points you got with that move
 
-void mark(Maze maze);
-int move_f(Maze maze);
-int move_b(Maze maze);
-int move_l(Maze maze);
-int move_r(Maze maze);
-int cwf(Maze maze, AntMemory AntMemory);
-int cwb(Maze maze, AntMemory coordiantes);
-int cwl(Maze maze, AntMemory AntMemory);
-int cwr(Maze maze, AntMemory AntMemory);
-void push(Coord coord, AntMemory AntMemory);
-Coord pop(AntMemory AntMemory);
-Coord peek(AntMemory AntMemory);
-void clear(AntMemory AntMemory);
+void mark(Maze *maze);
+int move_f(Maze *maze);
+int move_b(Maze *maze);
+int move_l(Maze *maze);
+int move_r(Maze *maze);
+int cwf(Maze *maze, AntMemory *AntMemory);
+int cwb(Maze *maze, AntMemory *coordiantes);
+int cwl(Maze *maze, AntMemory *AntMemory);
+int cwr(Maze *maze, AntMemory *AntMemory);
+void push(Coord coord, AntMemory *AntMemory);
+Coord pop(AntMemory *coordinates);
+Coord peek(AntMemory *coordinates);
+void clear(AntMemory *coordinates);
 
 #endif
