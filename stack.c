@@ -291,3 +291,24 @@ void BJPI(int x, Coordinates *coordinates) {
     }
 }
 
+void CJPI(Coordinates coordinates) { 
+    Coords current = peek(coordinates);
+    switch (current.deed) {
+        case 0:
+            current.x++;
+            break;
+        case 1: 
+            current.x--;
+            break;
+        case 2:
+            current.y--;
+            break;
+        case 3:
+            current.y++;
+            break;
+        default:
+            break;
+    }
+    push(current, coordinates);
+}
+
