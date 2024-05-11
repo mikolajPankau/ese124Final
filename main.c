@@ -8,6 +8,7 @@ char c[15];
 int repeatAmount, repeatNum;
 char **repeatArray;
 int temp;
+int points = 0;
 
 Maze *maze;
 AntMemory *memory;
@@ -16,43 +17,41 @@ AntMemory *memory;
 void runCommand(char *command)
 {
     //commands
-    if(strcmp(command, "MARK"))
+    if (strcmp(command, "MARK")) {
         mark(maze);
-    else if(strcmp(command, "MOVE_F"))
-        move_f(maze);
-    else if(strcmp(command, "MOVE_B"))
-        move_b(maze);
-    else if(strcmp(command, "MOVE_L"))
-        move_l(maze);
-    else if(strcmp(command, "MOVE_R"))
-        move_r(maze);
-    else if(strcmp(command, "CWL"))
+    } else if(strcmp(command, "MOVE_F")) {
+        points += move_f(maze);
+    } else if(strcmp(command, "MOVE_B")) {
+        points += move_b(maze);
+    } else if(strcmp(command, "MOVE_L")) {
+        points += move_l(maze);
+    } else if(strcmp(command, "MOVE_R")) {
+        points += move_r(maze);
+    } else if(strcmp(command, "CWL")) {
         cwl(maze);
-    else if(strcmp(command, "CWR"))
+    } else if(strcmp(command, "CWR")) {
         cwr(maze);
-    else if(strcmp(command, "CWF"))
+    } else if(strcmp(command, "CWF")) {
         cwf(maze);
-    else if(strcmp(command, "CWB"))
+    } else if(strcmp(command, "CWB")) {
         cwb(maze);
-    else if(strcmp(command, "PUSH"))
+    } else if(strcmp(command, "PUSH")) {
         push((*maze).antPos, memory);
-    else if(strcmp(command, "POP"))
+    } else if(strcmp(command, "POP")) {
         pop(memory);
-    else if(strcmp(command, "PEEK"))
+    } else if(strcmp(command, "PEEK")) {
         clear(memory);
-    else if(strcmp(command, "BJPI"))
-        {
-            scanf("%d", &temp);
-            bjpi(maze, temp);
-        }
-    else if(strcmp(command, "CJPI"))
-        {
-            scanf("%d", &temp);
-            cjpi(maze);
-        }
-    else if(strcmp(command, "BACKTRACK"))
+    } else if(strcmp(command, "BJPI")) {
+        scanf("%d", &temp);
+        bjpi(maze, temp);
+    }
+    else if(strcmp(command, "CJPI")) {
+        scanf("%d", &temp);
+        cjpi(maze);
+    }
+    else if(strcmp(command, "BACKTRACK")) {
         backtrack(maze, memory);
-    else if(strcmp(command, "RP"))
+    } else if(strcmp(command, "RP"))
         {
             scanf("%d %d", &repeatNum, &repeatAmount);
             repeatArray = malloc(repeatNum * sizeof(char *));
@@ -62,7 +61,7 @@ void runCommand(char *command)
             }
             for(int i = 0; i < repeatNum; i++)
             {
-                scanf("%s", &command);
+                scanf("%s", &c);
                 strcpy(repeatArray, command);
             }
             for(int i = 0; i < repeatAmount; i++)
@@ -73,10 +72,9 @@ void runCommand(char *command)
                 }
             }
         }
-    else
+    else {
         printf("Unknown instruction!\n");
-
-    
+    }
 }
 
 
@@ -142,5 +140,6 @@ int main()
         runCommand(c);
     }
 
+    printf("Total points earned: %d\n", points);
 
 } 
