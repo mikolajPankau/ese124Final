@@ -43,15 +43,15 @@ void runCommand(char *command)
     else if(strcmp(command, "BJPI"))
         {
             scanf("%d", &temp);
-            bjpi();
+            bjpi(maze, temp);
         }
     else if(strcmp(command, "CJPI"))
         {
             scanf("%d", &temp);
-            cjpi();
+            cjpi(maze);
         }
     else if(strcmp(command, "BACKTRACK"))
-        backtrack();
+        backtrack(maze, memory);
     else if(strcmp(command, "RP"))
         {
             scanf("%d %d", &repeatNum, &repeatAmount);
@@ -106,10 +106,10 @@ int main()
     scanf("%d, %d", &((*maze).antPos.x), &((*maze).antPos.y));
 
 
-    (*maze).map = malloc(numRows * sizeof(char *));
+    (*maze).map = malloc(numRows * sizeof(Coord *));
     for(int i = 0; i < numRows; i++)
     {
-        (*maze).map[i] = malloc(numCols * sizeof(char));
+        (*maze).map[i] = malloc(numCols * sizeof(Coord));
         for (int j = 0; j < numCols; j++)
         {
             fscanf(mapFile, "%c", &((*maze).map[i][j].type));       //assign the char in the maze

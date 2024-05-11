@@ -76,6 +76,7 @@ int cwf(Maze *maze) {
         freeSpots++;
         c =(*maze).map[c.x+1][c.y];
     }
+    (*maze).antPos.deed = 0;
     return freeSpots;
 }
 
@@ -88,6 +89,7 @@ int cwb(Maze *maze) {
         freeSpots++;
         c =(*maze).map[c.x-1][c.y];
     }
+    (*maze).antPos.deed = 1;
     return freeSpots;
 }
 
@@ -100,6 +102,7 @@ int cwl(Maze *maze) {
         freeSpots++;
         c =(*maze).map[c.x][c.y-1];
     }
+    (*maze).antPos.deed = 2;
     return freeSpots;
 }
 
@@ -112,6 +115,7 @@ int cwr(Maze *maze) {
         freeSpots++;
         c =(*maze).map[c.x][c.y+1];
     }
+    (*maze).antPos.deed = 3;
     return freeSpots;
 }
 
@@ -121,8 +125,8 @@ void push(Coord coord, AntMemory *coordinates) {
 }
 
 Coord pop(AntMemory *coordinates) {
-    return (*coordinates).coords[(*coordinates).top];
     (*coordinates).top = (*coordinates).top - 1;
+    return (*coordinates).coords[(*coordinates).top + 1];
 }
 
 Coord peek(AntMemory *coordinates) {
@@ -133,7 +137,7 @@ void clear(AntMemory *coordinates) {
     (*coordinates).top = -1;
 }
 
-void bjpi(int x, Maze *maze) { 
+void bjpi(Maze *maze, int x) { 
     if (x > 0) {
         Coord current = (*maze).antPos;
         switch (current.deed) {

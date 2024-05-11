@@ -16,7 +16,7 @@ typedef struct memory {
 
 typedef struct maze {
     int xSize, ySize;               //represents the size of the maze in x and y directions
-    Coord map[10][10];              //2d array representing the maze, will work on dynamic size later
+    Coord **map;              //2d array representing the maze, will work on dynamic size later
     Coord antPos;                   //current position of ant
 } Maze;
 
@@ -35,8 +35,8 @@ void push(Coord coord, AntMemory *coordinates);
 Coord pop(AntMemory *coordinates);
 Coord peek(AntMemory *coordinates);
 void clear(AntMemory *coordinates);
-void bjpi(int x, Maze *maze);
+void bjpi(Maze *maze, int x);
 void cjpi(Maze *maze);
-void backtrack(Maze *maze);
+void backtrack(Maze *maze, AntMemory *memory);
 
 #endif
